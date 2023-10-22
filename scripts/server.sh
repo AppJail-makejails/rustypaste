@@ -54,7 +54,7 @@ env | grep -Ee '^RUSTYPASTE_AUTH_TOKENS_.+=.*$' | cut -d= -f2- | while IFS= read
 	put -t string -v "${token}" 'server.auth_tokens.[]'
 
 	token_count=$((token_count+1))
-done
+done || exit $?
 
 # RUSTYPASTE_DELETE_TOKENS_*
 token_count=0
@@ -63,7 +63,7 @@ env | grep -Ee '^RUSTYPASTE_DELETE_TOKENS_.+=.*$' | cut -d= -f2- | while IFS= re
 	put -t string -v "${token}" 'server.delete_tokens.[]'
 
 	token_count=$((token_count+1))
-done
+done || exit $?
 
 if [ -n "${RUSTYPASTE_HANDLE_SPACES}" ]; then
 	if [ "${RUSTYPASTE_HANDLE_SPACES}" != "replace" -a "${RUSTYPASTE_HANDLE_SPACES}" != "encode" ]; then

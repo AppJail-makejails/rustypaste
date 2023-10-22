@@ -41,21 +41,21 @@ fi
 
 # RUSTYPASTE_MIME_OVERRIDE_*
 env | grep -Ee '^RUSTYPASTE_MIME_OVERRIDE_.+=.*$' | cut -d= -f2- | while IFS= read -r mime_override; do
-	id = `select 'paste.mime_override.len()'` || exit $?
+	id=`select 'paste.mime_override.len()'` || exit $?
 
-	mime = `printf "%s" "${mime_override}" | cut -d; -f1`
-	regex = `printf "%s" "${mime_override}" | cut -d; -f2-`
+	mime=`printf "%s" "${mime_override}" | cut -d';' -f1`
+	regex=`printf "%s" "${mime_override}" | cut -d';' -f2- -s`
 
-	info "Configuring paste.mime_override.${id} -> mime:${mime}, regex:${regex}"
-
-	if [ ${id} -eq 0 ]; then
-		put -t string -v "${mime}" "paste.mime_override.[].mime"
-	else
-		put -t string -v "${mime}" "paste.mime_override.[${id}].mime"
+	if [ -z "${mime}" -o -z "${regex}" ]; then
+		err "Both 'mime' and 'regex' are required: ${mime_override}."
+		exit 1
 	fi
 
+	info "Configuring paste.mime_override.${id} -> mime:${mime}, regex:${regex}"
+	
+	put -t string -v "${mime}" "paste.mime_override.[].mime"
 	put -t string -v "${regex}" "paste.mime_override.[${id}].regex"
-done
+done || exit $?
 
 mime_override_len=`select 'paste.mime_override.len()'` || exit $?
 
@@ -99,7 +99,7 @@ env | grep -Ee '^RUSTYPASTE_MIME_BLACKLIST_.+=.*$' | cut -d= -f2- | while IFS= r
 	put -t string -v "${mime_blacklist}" 'paste.mime_blacklist.[]'
 
 	mime_blacklist_count=$((mime_blacklist_count+1))
-done
+done || exit $?
 
 mime_blacklist_count=`select 'paste.mime_blacklist.len()'` || exit $?
 
