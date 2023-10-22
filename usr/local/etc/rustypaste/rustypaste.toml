@@ -1,0 +1,24 @@
+[config]
+refresh_rate = "30s"
+
+[server]
+address = "0.0.0.0:8000"
+max_content_length = "10MB"
+upload_path = "/var/db/rustypaste"
+timeout = "30s"
+expose_version = false
+expose_list = false
+auth_tokens = []
+delete_tokens = []
+handle_spaces = "replace"
+
+[landing_page]
+file = "/usr/local/etc/rustypaste/index.txt"
+content_type = "text/plain; charset=utf-8"
+
+[paste]
+default_extension = "txt"
+mime_override = []
+mime_blacklist = []
+duplicate_files = true
+delete_expired_files = { enabled = true, interval = "1h" }

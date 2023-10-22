@@ -1,0 +1,8 @@
+tags+: latest
+latest.arch: amd64
+latest.name: "rustypaste"
+latest.timestamp.amd64: 1698010485
+latest.sum.amd64: fadd8e662a31be204471b0343177669e372fe05e48f307dc273af4a43bf0e60b
+latest.size.amd64: 22414308
+latest.source.amd64: https://images.all101bsd.download/rustypaste/latest-amd64-image.appjail
+latest.source.amd64+: http://appjail.hpc.at/rustypaste/latest-amd64-image.appjail

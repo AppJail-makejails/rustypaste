@@ -1,0 +1,41 @@
+RUSTYPASTE_CONFIG="/usr/local/etc/rustypaste/rustypaste.toml"
+
+select()
+{
+	local out errlevel
+
+	out=`dasel -f "${RUSTYPASTE_CONFIG}" "$@"`
+
+	errlevel=$?
+
+	if [ ${errlevel} -ne 0 ]; then
+		err "${out}"
+		exit ${errlevel}
+	fi
+
+	printf "%s\n" "${out}"
+}
+
+put()
+{
+	local out errlevel
+
+	out=`dasel put -f "${RUSTYPASTE_CONFIG}" "$@"`
+
+	errlevel=$?
+
+	if [ ${errlevel} -ne 0 ]; then
+		err "${out}"
+		exit ${errlevel}
+	fi
+}
+
+err()
+{
+	echo "###> $* <###"
+}
+
+info()
+{
+	echo "======> $* <======"
+}

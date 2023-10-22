@@ -1,0 +1,36 @@
+INCLUDE options/options.makejail
+
+ARG rustypaste_tag=latest
+
+FROM --entrypoint gh+AppJail-makejails/rustypaste rustypaste:${rustypaste_tag}
+
+CMD echo "======> Enabling rustypaste ... <======"
+SYSRC rustypaste_enable=YES
+
+CMD echo "======> Installing scripts ... <======"
+COPY --verbose scripts
+
+CMD echo "======> Installing configuration file template ... <======"
+COPY --verbose usr
+
+CMD echo "======> Configuring ... <======"
+
+WORKDIR /scripts
+
+CMD echo "======> Configuring 'config' ... <======"
+RUN ./config.sh
+
+CMD echo "======> Configuring 'server' ... <======"
+RUN ./server.sh
+
+CMD echo "======> Configuring 'paste' ... <======"
+RUN ./paste.sh
+
+CMD echo "======> Uninstalling scripts ... <======"
+CMD rm -rf /scripts
+
+CMD echo "======> Fixing permissions ... <======"
+CMD chown -vR rustypaste:rustypaste /usr/local/etc/rustypaste
+
+CMD echo "======> Starting rustypaste ... <======"
+SERVICE rustypaste start
