@@ -1,0 +1,1 @@
+OPTION volume=rustypaste-db mountpoint:/var/db/rustypaste owner:498 group:498
