@@ -138,6 +138,12 @@ services:
 * `RUSTYPASTE_DELETE_EXPIRED_FILES`.
 * `RUSTYPASTE_DELETE_INTERVAL`: Interval for deleting the expired files automatically.
 
+### Volumes
+
+| Name           | Owner | Group | Perm | Type | Mountpoint          |
+| -------------- | ----- | ----- | ---- | ---- | ------------------- |
+| rustypaste-db  | 498   | 498   |  -   |  -   | /var/db/rustypaste  |
+
 ## Tags
   
 | Tag      | Arch    | Version        | Type   |
