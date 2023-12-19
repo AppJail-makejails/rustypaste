@@ -153,4 +153,4 @@ services:
 
 ## Notes
 
-* You can change the landing page by overriding the `/usr/local/etc/rustypaste/index.txt` file.
+1. You can change the landing page by overriding the `/usr/local/etc/rustypaste/index.txt` file.
