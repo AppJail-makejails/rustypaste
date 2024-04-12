@@ -1,6 +1,6 @@
 INCLUDE options/options.makejail
 
-ARG rustypaste_tag=13.2
+ARG rustypaste_tag=13.3
 
 FROM --entrypoint gh+AppJail-makejails/rustypaste rustypaste:${rustypaste_tag}
 
