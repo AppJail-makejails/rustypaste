@@ -109,7 +109,7 @@ services:
 
 ### Arguments
 
-* `rustypaste_tag` (default: `13.4`) See [#tags](#tags).
+* `rustypaste_tag` (default: `13.5`) See [#tags](#tags).
 * `rustypaste_ajspec` (default: `gh+AppJail-makejails/rustypaste`): Entry point where the `appjail-ajspec(5)` file is located.
 
 ### Environment
@@ -149,7 +149,7 @@ services:
   
 | Tag      | Arch    | Version        | Type   |
 | -------- | ------- | -------------- | ------ |
-| `13.4`   | `amd64` | `13.4-RELEASE` | `thin` |
+| `13.5`   | `amd64` | `13.5-RELEASE` | `thin` |
 | `14.2`   | `amd64` | `14.2-RELEASE` | `thin` |
 
 ## Notes
