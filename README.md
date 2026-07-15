@@ -36,6 +36,8 @@
 
 blog.orhun.dev/blazingly-fast-file-sharing
 
+<img src="https://github.com/orhun/rustypaste/raw/master/img/rustypaste_logo.png" width="30%" height="auto" alt="Rustypaste logo">
+
 ## How to use this Makejail
 
 ### Standalone
