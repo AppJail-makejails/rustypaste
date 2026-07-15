@@ -74,8 +74,39 @@ main(void)
 
 ### Deploy using `appjail-director`
 
+**appjail-director.yml**:
+
 ```yaml
-# TODO
+options:
+  - virtualnet: ':<random> default'
+  - nat:
+
+services:
+  rustypaste:
+    makejail: gh+AppJail-makejails/rustypaste
+    options:
+      - container: 'boot args:--pull'
+    volumes:
+      - upload: /app/upload
+      - config: app/config.toml
+    oci:
+      environment:
+        - PUID: 15000
+        - PGID: 15000
+
+volumes:
+  upload:
+    device: /var/appjail-volumes/rustypaste/upload
+  config:
+    device: /path/to/your/config.toml
+    type: nullfs
+    options: ro
+```
+
+**.env**:
+
+```dotenv
+DIRECTOR_PROJECT=rustypaste
 ```
 
 ### Arguments (stage: build)
