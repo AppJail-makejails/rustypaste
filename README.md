@@ -87,7 +87,7 @@ services:
   rustypaste:
     makejail: gh+AppJail-makejails/rustypaste
     options:
-      - container: 'boot args:--pull'
+      - container: 'args:--pull'
     volumes:
       - upload: /app/upload
       - config: app/config.toml

@@ -1,5 +1,6 @@
 ARG rustypaste_from=ghcr.io/appjail-makejails/rustypaste
 ARG rustypaste_tag=latest
 
+OPTION container=boot
 OPTION overwrite=force
 OPTION from=${rustypaste_from}:${rustypaste_tag}
