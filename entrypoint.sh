@@ -7,6 +7,6 @@ set -e
 create_user
 
 chown noroot:noroot /app
-chown -R noroot:noroot /app/upload
+change_owner /app/upload
 
 exec su-exec noroot rustypaste "$@"
