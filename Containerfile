@@ -14,7 +14,7 @@ LABEL org.opencontainers.image.title="rustypaste" \
 RUN set -xe; \
     \
     pkg update; \
-    pkg install -U rustypaste; \
+    pkg install rustypaste; \
     \
     if [ -z "${NO_PKGCLEAN}" ]; then \
         pkg clean -a; \
